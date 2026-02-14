@@ -1,112 +1,252 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>My Valentine 💘</title>
+<title>For Cassandra 💙</title>
+
 <style>
-body {
-  font-family: Arial, sans-serif;
-  text-align: center;
-  background-color: #ffe6f0;
-  margin: 0;
-  padding: 20px;
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  text-align:center;
+  background:linear-gradient(135deg,#89CFF0,#1E90FF);
+  color:white;
+  overflow:hidden;
 }
 
-.slide {
-  display: none;
+.slide{display:none;padding:40px;}
+.active{display:block;}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,150px);
+  gap:15px;
+  justify-content:center;
+  margin:20px;
 }
 
-.active {
-  display: block;
+.grid img{
+  width:150px;
+  height:150px;
+  object-fit:cover;
+  border-radius:20px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.3);
 }
 
-img {
-  width: 200px;
-  border-radius: 15px;
-  margin: 10px;
+.word{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:20px;
 }
 
-button {
-  padding: 10px 20px;
-  font-size: 18px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  margin: 10px;
+.word span{
+  background:white;
+  color:#1E90FF;
+  padding:12px;
+  width:35px;
+  font-weight:bold;
+  border-radius:8px;
 }
 
-#yesBtn {
-  background-color: pink;
+.letters{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+  margin-top:20px;
 }
 
-#noBtn {
-  background-color: lightgray;
-  position: absolute;
+.letters button{
+  background:white;
+  color:#1E90FF;
+  border:none;
+  padding:10px;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button.main{
+  margin-top:20px;
+  padding:12px 25px;
+  border:none;
+  border-radius:25px;
+  font-weight:bold;
+  background:white;
+  color:#1E90FF;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button.main:hover{
+  transform:scale(1.1);
+}
+
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:20px;
+  animation:floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+  from{transform:translateY(0);opacity:1;}
+  to{transform:translateY(-800px);opacity:0;}
 }
 </style>
 </head>
 
 <body>
 
+<!-- INTRO -->
 <div id="slide1" class="slide active">
-  <h2>4 Pics 1 Word 💘</h2>
-
-  <div class="grid">
-    <img src="pic1.jpg">
-    <img src="pic2.jpg">
-    <img src="pic3.jpg">
-    <img src="pic4.jpg">
-  </div>
-
-  <div class="word">
-    <span>_</span>
-    <span>_</span>
-    <span>_</span>
-    <span>_</span>
-    <span>_</span>
-    <span>_</span>
-  </div>
-
-  <button onclick="nextSlide(2)">Reveal Answer</button>
+  <h1>LET'S PLAY 💙</h1>
+  <p style="max-width:500px;margin:20px auto;font-size:18px;">
+    Before we start… 🥺  
+    Can you please take a video while playing this for me?  
+    I want to see your reactions. 💙
+  </p>
+  <button class="main" onclick="nextSlide(2)">Start</button>
 </div>
 
+<!-- GAME 1 PRETTIEST -->
 <div id="slide2" class="slide">
-  <h2>Because...</h2>
-  <p>You make my days brighter ☀️</p>
-  <button onclick="nextSlide(3)">Next</button>
+  <div class="grid">
+    <img src="prettiest1.jpg">
+    <img src="prettiest2.jpg">
+    <img src="prettiest3.jpg">
+    <img src="prettiest4.jpg">
+  </div>
+  <div class="word" id="word1"></div>
+  <div class="letters" id="letters1"></div>
 </div>
 
+<!-- EXPLANATION 1 -->
 <div id="slide3" class="slide">
-  <h2>Will you please be my Valentine, pumpkin pie? 💕</h2>
-  <button id="yesBtn" onclick="yesAnswer()">Yes 💖</button>
-  <button id="noBtn">No 😔</button>
+  <h1>PRETTIEST 🌸</h1>
+  <p>Because for me, you’re the prettiest girl in the world.</p>
+  <button class="main" onclick="nextSlide(4)">Next</button>
 </div>
 
+<!-- GAME 2 SNOOPY -->
 <div id="slide4" class="slide">
-  <h2>Yeyy! I knew you were going to say yes! 💘</h2>
+  <div class="grid">
+    <img src="snoopy1.jpg">
+    <img src="snoopy2.jpg">
+    <img src="snoopy3.jpg">
+    <img src="snoopy4.jpg">
+  </div>
+  <div class="word" id="word2"></div>
+  <div class="letters" id="letters2"></div>
+</div>
+
+<!-- EXPLANATION 2 -->
+<div id="slide5" class="slide">
+  <h1>SNOOPY 🐶</h1>
+  <p>Soft. Silly. My little Snoopyyyy.</p>
+  <button class="main" onclick="nextSlide(6)">Next</button>
+</div>
+
+<!-- GAME 3 CAKE -->
+<div id="slide6" class="slide">
+  <div class="grid">
+    <img src="cake1.jpg">
+    <img src="cake2.jpg">
+    <img src="cake3.jpg">
+    <img src="cake4.jpg">
+  </div>
+  <div class="word" id="word3"></div>
+  <div class="letters" id="letters3"></div>
+</div>
+
+<!-- EXPLANATION 3 -->
+<div id="slide7" class="slide">
+  <h1>CAKE 🎂</h1>
+  <p>The soft Cassandra. I love both versions of you.</p>
+  <button class="main" onclick="nextSlide(😎">Next</button>
+</div>
+
+<!-- VALENTINE PICS -->
+<div id="slide8" class="slide">
+  <h1>Valentine Energy 💙</h1>
+  <img src="val1.jpg">
+  <img src="val2.jpg">
+  <p>I want more memories like these with you…</p>
+  <button class="main" onclick="nextSlide(9)">Next</button>
+</div>
+
+<!-- QUESTION -->
+<div id="slide9" class="slide">
+  <h2>Will you be my Valentine? 💕</h2>
+  <button class="main" onclick="nextSlide(10)">Yes 💖</button>
+  <button class="main" id="noBtn">No 😔</button>
+</div>
+
+<!-- FINAL -->
+<div id="slide10" class="slide">
+  <h1>YAYYY I KNEW IT 😌💘</h1>
   <p>Are you free today?</p>
-  <p>Can we have a movie date on Discord anytime you're free? 🎬💻</p>
+  <p>Can we go on a Discord movie date whenever you're free? 🎬💻</p>
 </div>
 
 <script>
-function nextSlide(number) {
-  document.querySelectorAll(".slide").forEach(slide => {
-    slide.classList.remove("active");
+function nextSlide(n){
+  document.querySelectorAll(".slide").forEach(s=>s.classList.remove("active"));
+  document.getElementById("slide"+n).classList.add("active");
+}
+
+function setupGame(word,wordId,lettersId,next){
+  let container=document.getElementById(wordId);
+  let lettersContainer=document.getElementById(lettersId);
+  container.innerHTML="";
+  lettersContainer.innerHTML="";
+  let answer="";
+  word.split("").forEach(()=>{
+    let span=document.createElement("span");
+    span.textContent="_";
+    container.appendChild(span);
   });
-  document.getElementById("slide" + number).classList.add("active");
+  let shuffled=(word+"XYZABC").split("").sort(()=>0.5-Math.random());
+  shuffled.forEach(letter=>{
+    let btn=document.createElement("button");
+    btn.textContent=letter;
+    btn.onclick=()=>{
+      if(answer.length<word.length){
+        container.children[answer.length].textContent=letter;
+        answer+=letter;
+        if(answer===word){
+          setTimeout(()=>nextSlide(next),800);
+        }
+      }
+    };
+    lettersContainer.appendChild(btn);
+  });
 }
 
-function yesAnswer() {
-  nextSlide(4);
-}
+setupGame("PRETTIEST","word1","letters1",3);
+setupGame("SNOOPY","word2","letters2",5);
+setupGame("CAKE","word3","letters3",7);
 
-const noBtn = document.getElementById("noBtn");
-
-noBtn.addEventListener("mouseover", function() {
-  const x = Math.random() * window.innerWidth;
-  const y = Math.random() * window.innerHeight;
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
+/* Spinning No */
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",()=>{
+  const x=Math.random()*window.innerWidth;
+  const y=Math.random()*window.innerHeight;
+  noBtn.style.position="absolute";
+  noBtn.style.left=x+"px";
+  noBtn.style.top=y+"px";
 });
+
+/* Floating hearts */
+setInterval(()=>{
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="💙";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=Math.random()*20+15+"px";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+},800);
 </script>
 
 </body>
