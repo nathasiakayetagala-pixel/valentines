@@ -109,7 +109,7 @@ button.main:hover{
   <button class="main" onclick="nextSlide(2)">Start</button>
 </div>
 
-<!-- GAME 1 PRETTIEST -->
+<!-- GAME TEMPLATE SLIDES -->
 <div id="slide2" class="slide">
   <div class="grid">
     <img src="prettiest1.jpg">
@@ -121,14 +121,12 @@ button.main:hover{
   <div class="letters" id="letters1"></div>
 </div>
 
-<!-- EXPLANATION 1 -->
 <div id="slide3" class="slide">
   <h1>PRETTIEST 🌸</h1>
   <p>Because for me, you’re the prettiest girl in the world.</p>
   <button class="main" onclick="nextSlide(4)">Next</button>
 </div>
 
-<!-- GAME 2 SNOOPY -->
 <div id="slide4" class="slide">
   <div class="grid">
     <img src="snoopy1.jpg">
@@ -140,14 +138,12 @@ button.main:hover{
   <div class="letters" id="letters2"></div>
 </div>
 
-<!-- EXPLANATION 2 -->
 <div id="slide5" class="slide">
   <h1>SNOOPY 🐶</h1>
   <p>Soft. Silly. My little Snoopyyyy.</p>
   <button class="main" onclick="nextSlide(6)">Next</button>
 </div>
 
-<!-- GAME 3 CAKE -->
 <div id="slide6" class="slide">
   <div class="grid">
     <img src="cake1.jpg">
@@ -159,65 +155,53 @@ button.main:hover{
   <div class="letters" id="letters3"></div>
 </div>
 
-<!-- EXPLANATION 3 -->
 <div id="slide7" class="slide">
   <h1>CAKE 🎂</h1>
   <p>The soft Cassandra. I love both versions of you.</p>
-  <button class="main" onclick="nextSlide(8)">Next</button>
+  <button class="main" onclick="nextSlide(😎">Next</button>
 </div>
 
-  <!-- HUG GAME -->
 <div id="slide8" class="slide">
-    <h1>🤗</h1>
-
-    <div id="wordHug" class="word"></div>
-    <div id="lettersHug" class="letters"></div>
+  <h1>🤗</h1>
+  <div class="word" id="wordHug"></div>
+  <div class="letters" id="lettersHug"></div>
 </div>
 
-  <!-- HUG EXPLANATION -->
 <div id="slide9" class="slide">
-    <h1>HUG 🤗</h1>
-    <p>I really just want to hug you one day.</p>
-    <p>Not through a screen. Not through words.</p>
-    <p>But for real.</p>
-
-    <button class="main" onclick="nextSlide(10)">Next</button>
+  <h1>HUG 🤗</h1>
+  <p>I really just want to hug you one day.</p>
+  <p>Not through a screen. Not through words.</p>
+  <p>But for real.</p>
+  <button class="main" onclick="nextSlide(10)">Next</button>
 </div>
 
-  <!-- DISTANCE GAME -->
 <div id="slide10" class="slide">
-    <h1>🌍</h1>
-
-    <div id="wordDistance" class="word"></div>
-    <div id="lettersDistance" class="letters"></div>
+  <h1>🌍</h1>
+  <div class="word" id="wordDistance"></div>
+  <div class="letters" id="lettersDistance"></div>
 </div>
 
-  <!-- DISTANCE EXPLANATION -->
 <div id="slide11" class="slide">
-    <h1>DISTANCE 🌍</h1>
-    <p>Even with distance, I still choose you.</p>
-    <p>No matter how far, you're worth it.</p>
-
-    <button class="main" onclick="nextSlide(12)">Next</button>
+  <h1>DISTANCE 🌍</h1>
+  <p>Even with distance, I still choose you.</p>
+  <p>No matter how far, you're worth it.</p>
+  <button class="main" onclick="nextSlide(12)">Next</button>
 </div>
 
-<!-- VALENTINE PICS -->
 <div id="slide12" class="slide">
   <h1>Valentine Energy 💙</h1>
   <img src="val1.jpg">
   <img src="val2.jpg">
   <p>I want more memories like these with you…</p>
-  <button class="main" onclick="nextSlide(9)">Next</button>
+  <button class="main" onclick="nextSlide(13)">Next</button>
 </div>
 
-<!-- QUESTION -->
 <div id="slide13" class="slide">
   <h2>Will you be my Valentine? 💕</h2>
-  <button class="main" onclick="nextSlide(10)">Yes 💖</button>
+  <button class="main" onclick="nextSlide(14)">Yes 💖</button>
   <button class="main" id="noBtn">No 😔</button>
 </div>
 
-<!-- FINAL -->
 <div id="slide14" class="slide">
   <h1>YAYYY I KNEW IT 😌💘</h1>
   <p>Are you free today?</p>
@@ -230,66 +214,59 @@ function nextSlide(n){
   document.getElementById("slide"+n).classList.add("active");
 }
 
-function setupGame(word,wordId,lettersId,next){
-  let container=document.getElementById(wordId);
-  let lettersContainer=document.getElementById(lettersId);
+function setupGame(word, wordId, lettersId, nextSlideNum){
+  const container = document.getElementById(wordId);
+  const lettersContainer = document.getElementById(lettersId);
+
   container.innerHTML="";
   lettersContainer.innerHTML="";
   let answer="";
+
   word.split("").forEach(()=>{
-    let span=document.createElement("span");
+    const span=document.createElement("span");
     span.textContent="_";
     container.appendChild(span);
   });
+
   let shuffled=(word+"XYZABC").split("").sort(()=>0.5-Math.random());
+
   shuffled.forEach(letter=>{
-    let btn=document.createElement("button");
+    const btn=document.createElement("button");
     btn.textContent=letter;
+
     btn.onclick=()=>{
-      let blanks = container.querySelectorAll("span");
+      const blanks=container.querySelectorAll("span");
 
-    for (let i = 0; i < blanks.length; i++) {
-        if (blanks[i].textContent === "_") {
-            blanks[i].textContent = letter;
-            answer += letter;
-
-            // Hide letter but keep button space
-            btn.style.visibility = "hidden";
-
-            break;
+      for(let i=0;i<blanks.length;i++){
+        if(blanks[i].textContent==="_"){
+          blanks[i].textContent=letter;
+          answer+=letter;
+          btn.style.visibility="hidden";
+          break;
         }
-    }
-
-    if (answer === word) {
-        setTimeout(() => {
-            nextSlide(next);
-        }, 800);
       }
-      else if (answer.length === word.length) {
 
-    // Turn blanks red
-    let blanks = container.querySelectorAll("span");
-    blanks.forEach(b => b.style.color = "red");
-
-    // Reset after 800ms
-    setTimeout(() => {
-
-        // Clear blanks
-        blanks.forEach(b => {
-            b.textContent = "_";
-            b.style.color = "";
+      if(answer===word){
+        setTimeout(()=>nextSlide(nextSlideNum),800);
+      }
+      else if(answer.length===word.length){
+        blanks.forEach(b=>{
+          b.style.color="red";
         });
 
-        // Reset answer
-        answer = "";
-
-        // Show letters again
-        let buttons = lettersContainer.querySelectorAll("button");
-        buttons.forEach(btn => { btn.style.visibility = "visible";
-
-    }, 800);
-}
+        setTimeout(()=>{
+          blanks.forEach(b=>{
+            b.textContent="_";
+            b.style.color="#1E90FF";
+          });
+          answer="";
+          lettersContainer.querySelectorAll("button").forEach(b=>{
+            b.style.visibility="visible";
+          });
+        },800);
+      }
     };
+
     lettersContainer.appendChild(btn);
   });
 }
@@ -297,20 +274,16 @@ function setupGame(word,wordId,lettersId,next){
 setupGame("PRETTIEST","word1","letters1",3);
 setupGame("SNOOPY","word2","letters2",5);
 setupGame("CAKE","word3","letters3",7);
-setupGame("HUG", "wordHug", "lettersHug", 9);
-setupGame("DISTANCE", "wordDistance", "lettersDistance", 11);
+setupGame("HUG","wordHug","lettersHug",9);
+setupGame("DISTANCE","wordDistance","lettersDistance",11);
 
-/* Spinning No */
 const noBtn=document.getElementById("noBtn");
 noBtn.addEventListener("mouseover",()=>{
-  const x=Math.random()*window.innerWidth;
-  const y=Math.random()*window.innerHeight;
   noBtn.style.position="absolute";
-  noBtn.style.left=x+"px";
-  noBtn.style.top=y+"px";
+  noBtn.style.left=Math.random()*window.innerWidth+"px";
+  noBtn.style.top=Math.random()*window.innerHeight+"px";
 });
 
-/* Floating hearts */
 setInterval(()=>{
   const heart=document.createElement("div");
   heart.className="heart";
