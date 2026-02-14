@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Valentine 💘</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #ffe6f0;
+  margin: 0;
+  padding: 20px;
+}
+
+.slide {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+img {
+  width: 200px;
+  border-radius: 15px;
+  margin: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+#yesBtn {
+  background-color: pink;
+}
+
+#noBtn {
+  background-color: lightgray;
+  position: absolute;
+}
+</style>
+</head>
+
+<body>
+
+<div id="slide1" class="slide active">
+  <h2>You + Me 💞</h2>
+  <img src="YOUR_IMAGE_LINK_1">
+  <img src="YOUR_IMAGE_LINK_2">
+  <img src="YOUR_IMAGE_LINK_3">
+  <img src="YOUR_IMAGE_LINK_4">
+  <p>These pictures describe us...</p>
+  <button onclick="nextSlide(2)">Next</button>
+</div>
+
+<div id="slide2" class="slide">
+  <h2>Because...</h2>
+  <p>You make my days brighter ☀️</p>
+  <button onclick="nextSlide(3)">Next</button>
+</div>
+
+<div id="slide3" class="slide">
+  <h2>Will you please be my Valentine, pumpkin pie? 💕</h2>
+  <button id="yesBtn" onclick="yesAnswer()">Yes 💖</button>
+  <button id="noBtn">No 😔</button>
+</div>
+
+<div id="slide4" class="slide">
+  <h2>Yeyy! I knew you were going to say yes! 💘</h2>
+  <p>Are you free today?</p>
+  <p>Can we have a movie date on Discord anytime you're free? 🎬💻</p>
+</div>
+
+<script>
+function nextSlide(number) {
+  document.querySelectorAll(".slide").forEach(slide => {
+    slide.classList.remove("active");
+  });
+  document.getElementById("slide" + number).classList.add("active");
+}
+
+function yesAnswer() {
+  nextSlide(4);
+}
+
+const noBtn = document.getElementById("noBtn");
+
+noBtn.addEventListener("mouseover", function() {
+  const x = Math.random() * window.innerWidth;
+  const y = Math.random() * window.innerHeight;
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+});
+</script>
+
+</body>
+</html>
