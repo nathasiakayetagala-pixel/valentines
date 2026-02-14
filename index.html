@@ -211,12 +211,24 @@ function setupGame(word,wordId,lettersId,next){
     let btn=document.createElement("button");
     btn.textContent=letter;
     btn.onclick=()=>{
-      if(answer.length<word.length){
-        container.children[answer.length].textContent=letter;
-        answer+=letter;
-        if(answer===word){
-          setTimeout(()=>nextSlide(next),800);
+      let blanks = container.querySelectorAll("span");
+
+    for (let i = 0; i < blanks.length; i++) {
+        if (blanks[i].textContent === "_") {
+            blanks[i].textContent = letter;
+            answer += letter;
+
+            // Hide letter but keep button space
+            btn.style.visibility = "hidden";
+
+            break;
         }
+    }
+
+    if (answer === word) {
+        setTimeout(() => {
+            nextSlide(next);
+        }, 800);
       }
     };
     lettersContainer.appendChild(btn);
