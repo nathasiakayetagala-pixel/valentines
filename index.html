@@ -265,6 +265,30 @@ function setupGame(word,wordId,lettersId,next){
             nextSlide(next);
         }, 800);
       }
+      else if (answer.length === word.length) {
+
+    // Turn blanks red
+    let blanks = container.querySelectorAll("span");
+    blanks.forEach(b => b.style.color = "red");
+
+    // Reset after 800ms
+    setTimeout(() => {
+
+        // Clear blanks
+        blanks.forEach(b => {
+            b.textContent = "_";
+            b.style.color = "white";
+        });
+
+        // Reset answer
+        answer = "";
+
+        // Show letters again
+        let buttons = lettersContainer.querySelectorAll("button");
+        buttons.forEach(btn => btn.style.visibility = "visible");
+
+    }, 800);
+}
     };
     lettersContainer.appendChild(btn);
   });
