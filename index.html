@@ -166,8 +166,43 @@ button.main:hover{
   <button class="main" onclick="nextSlide(😎">Next</button>
 </div>
 
-<!-- VALENTINE PICS -->
+  <!-- HUG GAME -->
 <div id="slide8" class="slide">
+    <h1>🤗</h1>
+
+    <div id="wordHug" class="word"></div>
+    <div id="lettersHug" class="letters"></div>
+</div>
+
+  <!-- HUG EXPLANATION -->
+<div id="slide9" class="slide">
+    <h1>HUG 🤗</h1>
+    <p>I really just want to hug you one day.</p>
+    <p>Not through a screen. Not through words.</p>
+    <p>But for real.</p>
+
+    <button class="main" onclick="nextSlide(10)">Next</button>
+</div>
+
+  <!-- DISTANCE GAME -->
+<div id="slide10" class="slide">
+    <h1>🌍</h1>
+
+    <div id="wordDistance" class="word"></div>
+    <div id="lettersDistance" class="letters"></div>
+</div>
+
+  <!-- DISTANCE EXPLANATION -->
+<div id="slide11" class="slide">
+    <h1>DISTANCE 🌍</h1>
+    <p>Even with distance, I still choose you.</p>
+    <p>No matter how far, you're worth it.</p>
+
+    <button class="main" onclick="nextSlide(12)">Next</button>
+</div>
+
+<!-- VALENTINE PICS -->
+<div id="slide12" class="slide">
   <h1>Valentine Energy 💙</h1>
   <img src="val1.jpg">
   <img src="val2.jpg">
@@ -176,14 +211,14 @@ button.main:hover{
 </div>
 
 <!-- QUESTION -->
-<div id="slide9" class="slide">
+<div id="slide13" class="slide">
   <h2>Will you be my Valentine? 💕</h2>
   <button class="main" onclick="nextSlide(10)">Yes 💖</button>
   <button class="main" id="noBtn">No 😔</button>
 </div>
 
 <!-- FINAL -->
-<div id="slide10" class="slide">
+<div id="slide14" class="slide">
   <h1>YAYYY I KNEW IT 😌💘</h1>
   <p>Are you free today?</p>
   <p>Can we go on a Discord movie date whenever you're free? 🎬💻</p>
@@ -238,6 +273,8 @@ function setupGame(word,wordId,lettersId,next){
 setupGame("PRETTIEST","word1","letters1",3);
 setupGame("SNOOPY","word2","letters2",5);
 setupGame("CAKE","word3","letters3",7);
+setupGame("HUG", "wordHug", "lettersHug", 9);
+setupGame("DISTANCE", "wordDistance", "lettersDistance", 11);
 
 /* Spinning No */
 const noBtn=document.getElementById("noBtn");
