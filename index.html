@@ -10,7 +10,7 @@ body{
   text-align:center;
   background:linear-gradient(135deg,#89CFF0,#1E90FF);
   color:white;
-  overflow:hidden;
+  min-height:100vh;
 }
   h1{
   font-size:40px;
@@ -29,15 +29,19 @@ p{
   line-height:1.7;
 }
 
-.slide{display:none;padding:40px;}
+.slide{
+  display:none;
+  padding:30px 20px;
+  box-sizing:border-box;
+}
 .active{display:block;}
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(2,150px);
-  gap:15px;
+  grid-template-columns:repeat(2,130px);
+  gap:12px;
   justify-content:center;
-  margin:20px;
+  margin:15px auto;
 }
 
 .grid img{
